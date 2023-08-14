@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Quiz Website</title>
+<title>Advanced Quiz Website</title>
 <style>
   body {
     font-family: Arial, sans-serif;
@@ -21,6 +21,7 @@
   }
   h1 {
     text-align: center;
+    margin-bottom: 20px;
   }
   .question {
     font-size: 18px;
@@ -33,16 +34,30 @@
   .options input {
     margin-right: 5px;
   }
+  #submit {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  #submit:hover {
+    background-color: #0056b3;
+  }
   #result {
     font-weight: bold;
     text-align: center;
     margin-top: 20px;
+    display: none;
   }
 </style>
 </head>
 <body>
 <div class="container">
-  <h1>Quiz Time!</h1>
+  <h1>Advanced Quiz Time!</h1>
   <div class="question">1. What is the capital of France?</div>
   <div class="options">
     <label><input type="radio" name="q1" value="a"> a) Madrid</label>
@@ -55,27 +70,33 @@
     <label><input type="radio" name="q2" value="b"> b) Mars</label>
     <label><input type="radio" name="q2" value="c"> c) Venus</label>
   </div>
-  <button onclick="calculateScore()">Submit</button>
+  <!-- Add more questions here -->
+  <button id="submit">Submit</button>
   <div id="result"></div>
 </div>
 
 <script>
+const questions = [
+  { question: "What is the capital of France?", answer: "c" },
+  { question: "Which planet is known as the Red Planet?", answer: "b" },
+  // Add more questions here
+];
+
+document.getElementById("submit").addEventListener("click", calculateScore);
+
 function calculateScore() {
   let score = 0;
 
-  const q1Answer = document.querySelector('input[name="q1"]:checked');
-  const q2Answer = document.querySelector('input[name="q2"]:checked');
+  questions.forEach((q, index) => {
+    const selectedOption = document.querySelector(`input[name="q${index + 1}"]:checked`);
+    if (selectedOption && selectedOption.value === q.answer) {
+      score++;
+    }
+  });
 
-  if (q1Answer && q1Answer.value === 'c') {
-    score++;
-  }
-
-  if (q2Answer && q2Answer.value === 'b') {
-    score++;
-  }
-
-  const resultElement = document.getElementById('result');
-  resultElement.textContent = `You scored ${score} out of 2.`;
+  const resultElement = document.getElementById("result");
+  resultElement.textContent = `You scored ${score} out of ${questions.length}.`;
+  resultElement.style.display = "block";
 }
 </script>
 </body>
