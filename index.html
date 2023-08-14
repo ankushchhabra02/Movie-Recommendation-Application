@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz Website</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+  }
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  h1 {
+    text-align: center;
+  }
+  .question {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  .options label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  .options input {
+    margin-right: 5px;
+  }
+  #result {
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>Quiz Time!</h1>
+  <div class="question">1. What is the capital of France?</div>
+  <div class="options">
+    <label><input type="radio" name="q1" value="a"> a) Madrid</label>
+    <label><input type="radio" name="q1" value="b"> b) Rome</label>
+    <label><input type="radio" name="q1" value="c"> c) Paris</label>
+  </div>
+  <div class="question">2. Which planet is known as the Red Planet?</div>
+  <div class="options">
+    <label><input type="radio" name="q2" value="a"> a) Earth</label>
+    <label><input type="radio" name="q2" value="b"> b) Mars</label>
+    <label><input type="radio" name="q2" value="c"> c) Venus</label>
+  </div>
+  <button onclick="calculateScore()">Submit</button>
+  <div id="result"></div>
+</div>
+
+<script>
+function calculateScore() {
+  let score = 0;
+
+  const q1Answer = document.querySelector('input[name="q1"]:checked');
+  const q2Answer = document.querySelector('input[name="q2"]:checked');
+
+  if (q1Answer && q1Answer.value === 'c') {
+    score++;
+  }
+
+  if (q2Answer && q2Answer.value === 'b') {
+    score++;
+  }
+
+  const resultElement = document.getElementById('result');
+  resultElement.textContent = `You scored ${score} out of 2.`;
+}
+</script>
+</body>
+</html>
