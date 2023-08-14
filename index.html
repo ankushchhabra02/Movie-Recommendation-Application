@@ -1,103 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Advanced Quiz Website</title>
-<style>
-  body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-  }
-  .container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  h1 {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  .question {
-    font-size: 18px;
-    margin-bottom: 10px;
-  }
-  .options label {
-    display: block;
-    margin-bottom: 5px;
-  }
-  .options input {
-    margin-right: 5px;
-  }
-  #submit {
-    display: block;
-    margin: 20px auto;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  #submit:hover {
-    background-color: #0056b3;
-  }
-  #result {
-    font-weight: bold;
-    text-align: center;
-    margin-top: 20px;
-    display: none;
-  }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Blog</title>
+  <style>
+    /* Reset some default styling */
+    body, h1, h2, p {
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Apply some basic styles */
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    header, footer {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 10px 0;
+    }
+
+    .post-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .post {
+      border: 1px solid #ddd;
+      padding: 20px;
+    }
+
+    .post img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    a {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
-<div class="container">
-  <h1>Advanced Quiz Time!</h1>
-  <div class="question">1. What is the capital of France?</div>
-  <div class="options">
-    <label><input type="radio" name="q1" value="a"> a) Madrid</label>
-    <label><input type="radio" name="q1" value="b"> b) Rome</label>
-    <label><input type="radio" name="q1" value="c"> c) Paris</label>
+  <header>
+    <h1>Welcome to My Blog</h1>
+  </header>
+  <div class="container">
+    <div class="post-list">
+      <div class="post">
+        <img src="post1.jpg" alt="Post 1">
+        <h2>My First Blog Post</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor odio eu neque blandit, eu elementum nunc varius.</p>
+        <a href="#">Read more</a>
+      </div>
+      <div class="post">
+        <img src="post2.jpg" alt="Post 2">
+        <h2>Another Blog Post</h2>
+        <p>Ut eu ligula vel nisl blandit facilisis. Suspendisse sed urna vitae arcu lacinia tincidunt.</p>
+        <a href="#">Read more</a>
+      </div>
+      <!-- Add more posts here -->
+    </div>
   </div>
-  <div class="question">2. Which planet is known as the Red Planet?</div>
-  <div class="options">
-    <label><input type="radio" name="q2" value="a"> a) Earth</label>
-    <label><input type="radio" name="q2" value="b"> b) Mars</label>
-    <label><input type="radio" name="q2" value="c"> c) Venus</label>
-  </div>
-  <!-- Add more questions here -->
-  <button id="submit">Submit</button>
-  <div id="result"></div>
-</div>
-
-<script>
-const questions = [
-  { question: "What is the capital of France?", answer: "c" },
-  { question: "Which planet is known as the Red Planet?", answer: "b" },
-  // Add more questions here
-];
-
-document.getElementById("submit").addEventListener("click", calculateScore);
-
-function calculateScore() {
-  let score = 0;
-
-  questions.forEach((q, index) => {
-    const selectedOption = document.querySelector(`input[name="q${index + 1}"]:checked`);
-    if (selectedOption && selectedOption.value === q.answer) {
-      score++;
-    }
-  });
-
-  const resultElement = document.getElementById("result");
-  resultElement.textContent = `You scored ${score} out of ${questions.length}.`;
-  resultElement.style.display = "block";
-}
-</script>
+  <footer>
+    <p>&copy; 2023 My Blog. All rights reserved.</p>
+  </footer>
 </body>
 </html>
