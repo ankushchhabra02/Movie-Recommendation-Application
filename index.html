@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Blog</title>
+  <title>Thoughtful Blogs</title>
   <style>
     /* Reset some default styling */
     body, h1, h2, p {
@@ -14,6 +14,14 @@
     /* Apply some basic styles */
     body {
       font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    body.dark-mode {
+      background-color: #333;
+      color: #f4f4f4;
     }
 
     .container {
@@ -38,6 +46,12 @@
     .post {
       border: 1px solid #ddd;
       padding: 20px;
+      background-color: #fff;
+      transition: background-color 0.3s;
+    }
+
+    .post.dark-mode {
+      background-color: #444;
     }
 
     .post img {
@@ -53,31 +67,57 @@
     a:hover {
       text-decoration: underline;
     }
+
+    .dark-mode-button {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      cursor: pointer;
+      background-color: #333;
+      color: #fff;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+    }
   </style>
 </head>
 <body>
   <header>
-    <h1>Welcome to My Blog</h1>
+    <h1>Ankush Chhabra's Blogs</h1>
+    <button class="dark-mode-button" onclick="toggleDarkMode()">Toggle Dark Mode</button>
   </header>
   <div class="container">
     <div class="post-list">
       <div class="post">
-        <img src="post1.jpg" alt="Post 1">
-        <h2>My First Blog Post</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor odio eu neque blandit, eu elementum nunc varius.</p>
+        <img src="nature.png" alt="Nature">
+        <h2>The Healing Power of Nature</h2>
+        <p>Exploring how spending time in nature can have profound effects on our mental and emotional well-being.</p>
         <a href="#">Read more</a>
       </div>
       <div class="post">
-        <img src="post2.jpg" alt="Post 2">
-        <h2>Another Blog Post</h2>
-        <p>Ut eu ligula vel nisl blandit facilisis. Suspendisse sed urna vitae arcu lacinia tincidunt.</p>
+        <img src="nature.png" alt="Nature">
+        <h2>Embracing Nature's Beauty</h2>
+        <p>Appreciating the intricate details and breathtaking landscapes that nature offers to us.</p>
         <a href="#">Read more</a>
       </div>
-      <!-- Add more posts here -->
+      <div class="post">
+        <img src="nature.png" alt="Nature">
+        <h2>Nature's Lessons for Life</h2>
+        <p>Discovering valuable life lessons and insights from observing the natural world around us.</p>
+        <a href="#">Read more</a>
+      </div>
+      <!-- Add more nature-themed blogs here -->
     </div>
   </div>
   <footer>
-    <p>&copy; 2023 My Blog. All rights reserved.</p>
+    <p>&copy; 2023 Ankush Chhabra. All rights reserved.</p>
   </footer>
+  <script>
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+      const posts = document.querySelectorAll('.post');
+      posts.forEach(post => post.classList.toggle('dark-mode'));
+    }
+  </script>
 </body>
 </html>
